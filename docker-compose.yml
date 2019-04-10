@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  nest:
+    build: .
+    volumes:
+      - .:/nest
+    ports:
+      - 3000:3000
+      - 9229:9229
+    tty: true
