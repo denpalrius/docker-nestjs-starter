@@ -11,6 +11,7 @@
     "start:dev": "nodemon",
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
+    "build:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
@@ -20,10 +21,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@godaddy/terminus": "^4.1.0",
     "@nestjs/common": "^6.1.0",
     "@nestjs/core": "^6.1.0",
     "@nestjs/microservices": "^6.0.4",
     "@nestjs/platform-express": "^6.0.4",
+    "@nestjs/terminus": "^6.1.0",
     "@nestjs/websockets": "^6.0.4",
     "reflect-metadata": "^0.1.13",
     "rimraf": "2.6.3",

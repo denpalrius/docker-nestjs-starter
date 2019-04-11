@@ -9,12 +9,13 @@ services:
     environment:
       - NODE_ENV=production
       - port=3000
+      - soap_port=3000
       - version=1.0
     volumes:
       - .:/nest
     ports:
-      - 3000:3000
-      - 8000:8000
+      - "3000:3000"
+      - "8000:8000"
     tty: true
     expose:
       - "3000"
