@@ -1,0 +1,54 @@
+Docker with NestJs Nodejs app
+
+1. Add Create Dockerfile
+2. Add docker-compose.yml
+3. Add necessary files to .gitignore
+4. Add .dockerignore and unnecessary files
+5. Add  nodemon-docker-debug.json
+6. Add nodemon-docker-debug.json
+7. Add   "debug": "nodemon -L --config nodemon-docker-debug.json" to package.json
+
+
+##### USING COMPOSE
+# Build docker image:
+$ docker-compose build
+
+# Start and login to the container:
+$ docker-compose up -d
+
+$ docker-compose exec nest bash
+
+# Scaffold the base project with the Nest CLI and install dependencies:
+
+$ nest new .
+$ npm install
+
+# Run the app:
+
+$ npm start
+
+##### USING COMPOSE
+
+##### USING DOCKER
+
+## Build image
+$ docker build -t quantumfigdev/docker-nest-js .
+
+## Run the image
+$ docker run -p 3000:3000 -d quantumfigdev/docker-nest-js -n docker-nest-js
+$ docker run -it --rm --name my-running-app my-nodejs-app
+
+# Get container ID
+$ docker ps
+
+# Print app output
+$ docker logs <container id>
+
+# Example
+Running on http://localhost:3000
+
+# Enter the container
+$ docker exec -it 676d09308bcc /bin/bash
+
+Resources:
+https://qiita.com/rema424/items/36475ea7379e0d9c5972
