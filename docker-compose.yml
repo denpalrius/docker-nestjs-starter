@@ -17,7 +17,7 @@ services:
       - "3000:3000"
       - "8000:8000"
     tty: true
-    expose:
-      - "3000"
-      - "8000"
+    # expose:
+    #   - "3000"
+    #   - "8000"
     command: "npm start"
