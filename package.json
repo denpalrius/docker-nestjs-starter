@@ -22,12 +22,12 @@
   },
   "dependencies": {
     "@godaddy/terminus": "^4.1.0",
-    "@nestjs/common": "^6.1.0",
-    "@nestjs/core": "^6.1.0",
-    "@nestjs/microservices": "^6.0.4",
-    "@nestjs/platform-express": "^6.0.4",
+    "@nestjs/common": "^6.1.1",
+    "@nestjs/core": "^6.1.1",
+    "@nestjs/microservices": "^6.1.1",
+    "@nestjs/platform-express": "^6.1.1",
     "@nestjs/terminus": "^6.1.0",
-    "@nestjs/websockets": "^6.0.4",
+    "@nestjs/websockets": "^6.1.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "2.6.3",
     "rxjs": "^6.4.0"
