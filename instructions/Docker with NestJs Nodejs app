@@ -32,7 +32,8 @@ $ npm start
 ##### USING DOCKER
 
 ## Build image
-$ docker build -t quantumfigdev/docker-nest-js .
+$ docker build -t quantumfigdev/docker-nest-js:v1.0 .
+$ docker build -t quantumfigdev/docker-nest-js:latest -t quantumfigdev/docker-nest-js:v1.0 .
 
 ## Run the image
 $ docker run -p 3000:3000 -d quantumfigdev/docker-nest-js -n docker-nest-js

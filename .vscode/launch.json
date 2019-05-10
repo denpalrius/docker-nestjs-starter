@@ -2,6 +2,18 @@
     "version": "0.2.0",
     "configurations": [
       {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch via NPM (WSL)",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+          "run-script",
+          "debug"
+        ],
+        "port": 9229,
+        "useWSL": true
+      },
+      {
         "name": "Docker: Attach to Node",
         "type": "node",
         "request": "attach",
