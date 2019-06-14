@@ -29,6 +29,7 @@
     "@nestjs/terminus": "^6.1.0",
     "@nestjs/websockets": "^6.1.1",
     "logrocket": "^1.0.0",
+    "nestjs-redis": "^1.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "2.6.3",
     "rxjs": "^6.4.0"
