@@ -9,48 +9,74 @@ Docker with NestJs Nodejs app
 7. Add   "debug": "nodemon -L --config nodemon-docker-debug.json" to package.json
 
 
-##### USING COMPOSE
-# Build docker image:
+# USING COMPOSE
+
+## Build docker image:
+
+```bash
 $ docker-compose build
+```
 
-# Start and login to the container:
+## Start and login to the container:
+
+```bash
 $ docker-compose up -d
-
 $ docker-compose exec nest bash
+```
 
-# Scaffold the base project with the Nest CLI and install dependencies:
 
+## Scaffold the base project with the Nest CLI and install dependencies:
+
+```bash
 $ nest new .
 $ npm install
+```
 
 # Run the app:
 
+```bash
 $ npm start
+```
 
-##### USING COMPOSE
+# USING COMPOSE
 
-##### USING DOCKER
+## USING DOCKER
 
-## Build image
+### Build image
+
+```bash
 $ docker build -t quantumfigdev/docker-nest-js:v1.0 .
 $ docker build -t quantumfigdev/docker-nest-js:latest -t quantumfigdev/docker-nest-js:v1.0 .
+```
 
-## Run the image
+### Run the image
+
+```bash
 $ docker run -p 3000:3000 -d quantumfigdev/docker-nest-js -n docker-nest-js
 $ docker run -it --rm --name my-running-app my-nodejs-app
+```
 
-# Get container ID
+### Get container ID
+```bash
 $ docker ps
+```
 
-# Print app output
+### Print app output
+```bash
 $ docker logs <container id>
+```
 
-# Example
+### Example
+
 Running on http://localhost:3000
 
-# Enter the container
-$ docker exec -it 676d09308bcc /bin/bash
+### Enter the container
 
-Resources:
+```bash
+$ docker exec -it 676d09308bcc /bin/bash
+```
+
+# Resources
+
 https://qiita.com/rema424/items/36475ea7379e0d9c5972
 Best practices: https://github.com/docker/docker-bench-security
