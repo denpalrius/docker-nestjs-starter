@@ -6,7 +6,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello() {
-    return this.appService.getHello();
+  sayHello() {
+    return this.appService.sayHello();
+  }
+
+  @Get()
+  async fetchCountries(): Promise<any> {
+    return await this.appService.fetchCountries();
   }
 }
