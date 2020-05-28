@@ -16,6 +16,20 @@ export class AppService {
 
   async fetchCountries(): Promise<any> {
     const countriesUrl = `https://restcountries.eu/rest/v2/region/africa`;
-    return await this.httpService.get(countriesUrl).toPromise();
+    const { data } = await this.httpService.get(countriesUrl).toPromise();
+
+    console.log(data);
+
+    return data;
+  }
+
+  async fetchAnotherAPI(): Promise<any> {
+    const { data } = await this.httpService
+      .get(process.env.APIENDPOINT)
+      .toPromise();
+
+    console.log(data);
+
+    return data;
   }
 }
