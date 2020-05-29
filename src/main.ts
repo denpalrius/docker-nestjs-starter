@@ -1,13 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { setEnVars } from './envars';
+import { InternalServerErrorException } from '@nestjs/common';
 
 let server: { close: (arg0: (err: any) => void) => void };
 
-console.log('process.env.API_ENDPOINT: ', process.env.API_ENDPOINT);
+const port = Number(process.env.PORT) || 3000;
 
 async function bootstrap() {
+  const env = await setEnVars();
+  if (!env) {
+    throw new InternalServerErrorException();
+  }
+
   const app = await NestFactory.create(AppModule);
-  server = await app.listen(3000);
+  server = await app.listen(port);
+
+  console.log('Application has started on ' + port);
 
   // Handle process kill signals
   process.on('SIGINT', shutdown);
