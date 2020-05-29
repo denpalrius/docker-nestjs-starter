@@ -1,5 +1,4 @@
 import { Injectable, HttpService } from '@nestjs/common';
-import { Observable } from 'rxjs';
 
 @Injectable()
 export class AppService {
@@ -8,30 +7,25 @@ export class AppService {
   sayHello() {
     return {
       node_env: process.env.NODE_ENV,
-      port: process.env.port,
-      message: 'Hello Nest from Docker!',
+      port: process.env.PORT,
+      message: 'Hello Docker from Nest!',
       time: Date.now().toString(),
     };
   }
 
   async fetchCountries(): Promise<any> {
-    const countriesUrl = `https://restcountries.eu/rest/v2/region/africa`;
-    const { data } = await this.httpService.get(countriesUrl).toPromise();
+    const url = process.env.COUNTRY_LIST_API_ENDPOINT;
+    const { data } = await this.httpService.get(url).toPromise();
 
     console.log(`There are ${data.length} countries in Africa!`);
-
     return data;
   }
 
-  async fetchAnotherAPI(): Promise<any> {
-    const url = process.env.API_ENDPOINT;
+  async fetchSingleCountry(): Promise<any> {
+    const url = process.env.SINGLE_COUNTRY_API_ENDPOINT;
     console.log('url: ', url);
-    console.log('process.env: ', process.env);
 
     const { data } = await this.httpService.get(url).toPromise();
-
-    console.log('data', data);
-
     return data;
   }
 }

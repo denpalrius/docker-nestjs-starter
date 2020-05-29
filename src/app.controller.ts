@@ -17,6 +17,6 @@ export class AppController {
 
   @Get('api_call')
   async make_api_call(): Promise<any> {
-    return await this.appService.fetchAnotherAPI();
+    return await this.appService.fetchSingleCountry();
   }
 }
