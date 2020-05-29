@@ -5,18 +5,26 @@ import { InternalServerErrorException } from '@nestjs/common';
 
 let server: { close: (arg0: (err: any) => void) => void };
 
-const port = Number(process.env.PORT) || 3000;
-
 async function bootstrap() {
+  /*
+    The setEnVars method uses Google Cloud Secrets to fetch for variables
+
+    TODO: If you're not using GCP, please set the following variables in another way
+    process.env.APP_NAME
+    process.env.PORT
+    process.env.NODE_ENV
+    process.env.SINGLE_COUNTRY_API_ENDPOINT
+    process.env.COUNTRY_LIST_API_ENDPOINT
+  */
   const env = await setEnVars();
   if (!env) {
     throw new InternalServerErrorException();
   }
 
   const app = await NestFactory.create(AppModule);
-  server = await app.listen(port);
+  server = await app.listen(process.env.PORT);
 
-  console.log('Application has started on ' + port);
+  console.log('Application has started on ' + process.env.PORT);
 
   // Handle process kill signals
   process.on('SIGINT', shutdown);

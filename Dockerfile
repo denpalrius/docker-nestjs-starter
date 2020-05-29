@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:14-alpine
 
 # Set necessary environment variables.
 ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
@@ -42,9 +42,6 @@ RUN ls -l
 
 # Expose API port
 EXPOSE 3000
-
-# Expose SOAP port
-# EXPOSE 8000
 
 ENTRYPOINT ["/sbin/tini", "--"]
 

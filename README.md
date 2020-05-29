@@ -38,22 +38,16 @@ $ npm start
 
 
 ## Using Docker
-Build image
 ```sh
+# Build image
 $ docker build -t docker-nest-js:v1.0 .
-```
 
-Run the image
-```sh
-$ docker run -p 3000:3000 -d docker-nest-js
-```
-or interactively(`-it`), ensuring it is deleted after Docker is closed(`--rm`) and give it a name (`-n`)
-```sh
-$ docker run -it --rm -n docker-nest-js docker-nest-js sh
-```
-Or use the following command for images with an entrypoint
-```sh
+# Run the image interactively
+$ docker run -it -p 3000:3000 docker-nest-js
+
+# Or use the following command for images with an entrypoint
 $ docker run -it --entrypoint sh docker-nest-js
+
 ```
 
 
@@ -71,6 +65,7 @@ $ docker-compose exec app bash
 
 Scaffold the base project with the Nest CLI and install dependencies
 ```sh
+npm i -g @nestjs/cli
 $ nest new .
 $ npm install
 ```
@@ -91,11 +86,10 @@ View logs
 $ docker logs <container id>
 ```
 
-Enter the container
+Enter the container (Use sh because bash is not installed in alpine linux by default)
 ```sh
-$ docker exec -it <container id> /bin/bash
+$ docker exec -it <container id> /bin/sh
 ```
-
 
 ## Testing
 
