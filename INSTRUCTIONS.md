@@ -34,23 +34,27 @@ $ npm start
 
 <br />
 
-## Using Dockerfile
+## Using Docker
 Build image
 ```sh
-$ docker build -t quantumfigdev/docker-nest-js:v1.0 .
+$ docker build -t docker-nest-js:v1.0 .
 ```
 or
 ```sh
-$ docker build -t quantumfigdev/docker-nest-js:latest -t quantumfigdev/docker-nest-js:v1.0 .
+$ docker build -t docker-nest-js:latest -t docker-nest-js:v1.0 .
 ```
 
 Run the image
 ```sh
-$ docker run -p 3000:3000 -d quantumfigdev/docker-nest-js -n docker-nest-js
+$ docker run -p 3000:3000 -d docker-nest-js -n docker-nest-js
 ```
-or
+or interactively(-it), ensuring it is deleted after Docker is closed(--rm)
 ```sh
-$ docker run -it --rm --name my-running-app my-nodejs-app
+$ docker run -it --rm --name docker-nest-js docker-nest-js sh
+```
+Or following for images with an entrypoint
+```sh
+$ docker run -it --entrypoint sh docker-nest-js
 ```
 
 ## Get container ID
@@ -65,7 +69,7 @@ $ docker logs <container id>
 
 ## Enter the container
 ```sh
-$ docker exec -it 676d09308bcc /bin/bash
+$ docker exec -it <container id> /bin/bash
 ```
 
 ## Resources
