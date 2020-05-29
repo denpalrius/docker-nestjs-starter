@@ -1,7 +1,12 @@
 FROM node:12-alpine
 
+ARG API_ENDPOINT="https://payments.orteo.co"
+
+RUN echo "API_ENDPOINT is ${API_ENDPOINT}"
+
 # Set necessary environment variables.
-ENV NPM_CONFIG_PREFIX=/home/node/.npm-global \
+ENV API_ENDPOINT=${API_ENDPOINT} \
+    NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PATH=$PATH:/home/node/.npm-global/bin:/home/node/node_modules/.bin:$PATH
 
 # For handling Kernel signals properly
@@ -17,7 +22,6 @@ RUN mkdir -p /app/node_modules
 # This ensures that npm install can be executed successfully with the correct permissions
 RUN chown -R node:node /app
 
-
 # Set the user to use when running this image
 # Non previlage mode for better security (this user comes with official NodeJS image).
 USER node
@@ -25,28 +29,23 @@ USER node
 # Set working directory
 WORKDIR /app
 
-# ADD . /nest
- 
 # Copy package.json, package-lock.json
 # Copying this separately prevents re-running npm install on every code change.
 COPY --chown=node:node package*.json ./
-
-# Display file and directory permissions
-RUN ls -la
 
 # Install dependencies.
 # RUN npm i -g @nestjs/cli
 RUN npm ci --only=production
 
 # Necessary to run before adding application code to leverage Docker cache
-# RUN npm cache clean --force
+RUN npm cache clean --force
 # RUN mv node_modules ../
 
 # Bundle app source
-COPY . ./
+COPY --chown=node:node . ./
 
-# Copy compiled application files
-# COPY --chown=node:node ./dist .
+# Display directory structure
+RUN ls -la
 
 # Expose API port
 EXPOSE 3000

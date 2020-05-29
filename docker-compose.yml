@@ -3,16 +3,16 @@ version: "3"
 services:
   nest:
     build: .
-    image: "node:8"
+    image: "node:12-alpine"
     user: "node"
-    working_dir: /nest
+    working_dir: /app
     environment:
       - NODE_ENV=production
       - port=3000
-      - soap_port=3000
+      - soap_port=8000
       - version=1.0
     volumes:
-      - .:/nest
+      - .:/app
     ports:
       - "3000:3000"
       - "8000:8000"

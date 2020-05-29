@@ -18,17 +18,19 @@ export class AppService {
     const countriesUrl = `https://restcountries.eu/rest/v2/region/africa`;
     const { data } = await this.httpService.get(countriesUrl).toPromise();
 
-    console.log(data);
+    console.log(`There are ${data.length} countries in Africa!`);
 
     return data;
   }
 
   async fetchAnotherAPI(): Promise<any> {
-    const { data } = await this.httpService
-      .get(process.env.APIENDPOINT)
-      .toPromise();
+    const url = process.env.API_ENDPOINT;
+    console.log('url: ', url);
+    console.log('process.env: ', process.env);
 
-    console.log(data);
+    const { data } = await this.httpService.get(url).toPromise();
+
+    console.log('data', data);
 
     return data;
   }
