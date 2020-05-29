@@ -8,6 +8,10 @@ azure-pipelines.yml
 .prettierrc
 nodemon*.json
 
+# Secrets
+.env
+serverless-qa-service-account.json
+
 # Node Files
 node_modules
 npm-debug.log

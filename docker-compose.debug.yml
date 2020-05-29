@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  docker-nest-js:
+    image: docker-nest-js
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3000
+      - 9229:9229
+    command: node --inspect=0.0.0.0:9229 dist/main.js

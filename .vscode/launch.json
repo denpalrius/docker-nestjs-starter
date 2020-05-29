@@ -1,28 +1,28 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "type": "node",
-        "request": "launch",
-        "name": "Launch via NPM (WSL)",
-        "runtimeExecutable": "npm",
-        "runtimeArgs": [
-          "run-script",
-          "debug"
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Node.js in Docker",
+      "containerName": "docker-nest-js",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "platform": "node",
+      "node": {
+        "sourceMaps": true,
+        "remoteRoot": "/app",
+        "outFiles": [
+          "/dist"
         ],
-        "port": 9229,
-        "useWSL": true
-      },
-      {
-        "name": "Docker: Attach to Node",
-        "type": "node",
-        "request": "attach",
-        "port": 9229,
-        "address": "localhost",
-        "localRoot": "${workspaceFolder}",
-        "remoteRoot": "/nest",
-        "protocol": "inspector",
-        "restart": true
+        "trace": true
       }
-    ]
-  }
+    },
+    {
+      "name": "Docker Node.js Launch",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-run: debug",
+      "platform": "node"
+    }
+  ]
+}

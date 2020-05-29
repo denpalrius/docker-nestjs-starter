@@ -20,3 +20,4 @@ dist
 
 # dotenv environment variables file
 .env
+serverless-qa-service-account.json

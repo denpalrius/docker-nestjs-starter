@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "docker-run",
+			"label": "docker-run: debug",
+			"dependsOn": [
+				"docker-build"
+			],
+			"dockerRun": {
+				"image": "docker-nest-js",
+				"envFiles": [
+					".env"
+				],
+				"containerName": "docker-nest-js",
+				"command": "nest start --debug 0.0.0.0:9229",
+				"env": {
+					"DEBUG": "*"
+				}
+			},
+			"node": {
+				"enableDebugging": true,
+				"remoteRoot": "/app"
+			}
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build",
+			"platform": "node",
+			"dockerBuild": {
+				"dockerfile": "${workspaceFolder}/Dockerfile",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run: release",
+			"dependsOn": [
+				"docker-build"
+			],
+			"platform": "node"
+		}
+	]
+}

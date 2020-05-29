@@ -1,5 +1,5 @@
 {
-  "name": "docker-nestjs-starter",
+  "name": "nest-js-docker-starter",
   "version": "1.0.0",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
@@ -23,11 +23,13 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@google-cloud/secret-manager": "^3.0.0",
     "@nestjs/common": "^7.1.1",
     "@nestjs/core": "^7.1.1",
     "@nestjs/microservices": "^7.1.1",
     "@nestjs/platform-express": "^7.1.1",
     "@nestjs/websockets": "^7.1.1",
+    "dotenv": "^8.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.5"
