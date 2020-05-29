@@ -18,17 +18,16 @@ $ npm run start:dev
 or
 nest start
 
-# Debug/watch mode
+# Debug/watch
 $ npm run start:debug
 
-# production mode
+# production
 $ npm run build:prod
 $ npm start
-
 ```
 
 ## Setting up the app for use with Docker
-1. Add Create Dockerfile
+1. Add Dockerfile
 2. Add docker-compose.yml
 3. Add unnecessary files to .gitignore
 4. Add .dockerignore and include the unnecessary files
@@ -39,55 +38,33 @@ $ npm start
 
 ## Using Docker
 ```sh
-# Build image
+# Build the image
 $ docker build -t docker-nest-js:v1.0 .
 
 # Run the image interactively
-$ docker run -it -p 3000:3000 docker-nest-js
-
-# Or use the following command for images with an entrypoint
-$ docker run -it --entrypoint sh docker-nest-js
-
+$ docker run -it -p 3000:3000 docker-nest-js:v1.0
 ```
 
 
 ## Using Docker Compose
-Build the docker image
 ```sh
+# Build the docker image
 $ docker-compose build
-```
 
-Start and login to the container
-```sh
+# Start and login to the container
 $ docker-compose up -d
-$ docker-compose exec app bash
-```
-
-Scaffold the base project with the Nest CLI and install dependencies
-```sh
-npm i -g @nestjs/cli
-$ nest new .
-$ npm install
-```
-
-Run the app
-```sh
-$ npm start
+$ docker-compose exec app sh
 ```
 
 ## Other useful Docker commands
-Get the container ID
 ```sh
+# Get the container ID
 $ docker ps
-```
 
-View logs
-```sh
+# View logs
 $ docker logs <container id>
-```
 
-Enter the container (Use sh because bash is not installed in alpine linux by default)
-```sh
+# Enter the container (In alpine, use sh because bash is not installed by default)
 $ docker exec -it <container id> /bin/sh
 ```
 
