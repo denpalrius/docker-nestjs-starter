@@ -1,23 +1,22 @@
-version: "3"
+version: "3.8"
 
 services:
-  nest:
-    build: .
-    image: "node:12-alpine"
+  app:
+    image: "node:14-slim"
+    container_name: docker-nest-js
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
     user: "node"
-    working_dir: /app
+    working_dir: /usr/src/app
     environment:
       - NODE_ENV=production
-      - port=3000
-      - soap_port=8000
-      - version=1.0
+      - VERSION=1.0
     volumes:
-      - .:/app
+      - .:/usr/src/app
+      - /usr/app/node_modules
     ports:
       - "3000:3000"
-      - "8000:8000"
     tty: true
-    # expose:
-    #   - "3000"
-    #   - "8000"
     command: "npm start"
+  

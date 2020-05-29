@@ -1,12 +1,19 @@
-version: '3.4'
+version: "3.8"
 
 services:
-  docker-nest-js:
-    image: docker-nest-js
-    build: .
+  app:
+    image: node:14
+    build:
+      context: .
+      dockerfile: Dockerfile.slim
+    working_dir: /usr/src/app
     environment:
-      NODE_ENV: development
+      - NODE_ENV: development
+    volumes:
+      - .:/usr/src/app
+      - /usr/app/node_modules
     ports:
-      - 3000
+      - 3000:3000
       - 9229:9229
+    tty: true
     command: node --inspect=0.0.0.0:9229 dist/main.js
