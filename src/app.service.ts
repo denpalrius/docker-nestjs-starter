@@ -1,15 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpService } from '@nestjs/common';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AppService {
-  getHello() {
+  constructor(private httpService: HttpService) {}
+
+  sayHello() {
     return {
-      app: 'Quantum Fig',
       node_env: process.env.NODE_ENV,
       port: process.env.port,
-      soap_port: process.env.soap_port,
-      message: 'Hello World from Docker!',
-      time: Date.now(),
+      message: 'Hello Nest from Docker!',
+      time: Date.now().toString(),
     };
+  }
+
+  async fetchCountries(): Promise<any> {
+    const countriesUrl = `https://restcountries.eu/rest/v2/region/africa`;
+    const { data } = await this.httpService.get(countriesUrl).toPromise();
+
+    console.log(data);
+
+    return data;
+  }
+
+  async fetchAnotherAPI(): Promise<any> {
+    const { data } = await this.httpService
+      .get(process.env.APIENDPOINT)
+      .toPromise();
+
+    console.log(data);
+
+    return data;
   }
 }
