@@ -2,7 +2,6 @@
 .github
 .vscode
 coverage
-docker-compose.yml
 azure-pipelines.yml
 *.md
 .prettierrc
