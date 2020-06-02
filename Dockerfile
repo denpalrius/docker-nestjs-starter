@@ -1,7 +1,7 @@
 FROM node:14-alpine
 
 # Set necessary environment variables.
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
     NPM_CONFIG_PREFIX=/home/node/.npm-global \
     PATH=$PATH:/home/node/.npm-global/bin:/home/node/node_modules/.bin:$PATH
 
