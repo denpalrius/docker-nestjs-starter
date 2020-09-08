@@ -82,7 +82,7 @@ $ npm run test:cov
 ```
 
 ## Resources
-Tutoril: https://qiita.com/rema424/items/36475ea7379e0d9c5972  
+Tutorial: https://qiita.com/rema424/items/36475ea7379e0d9c5972  
 Best practices: https://github.com/docker/docker-bench-security
 
 
