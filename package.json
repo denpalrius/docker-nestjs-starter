@@ -27,7 +27,7 @@
     "@nestjs/common": "^7.1.1",
     "@nestjs/core": "^7.1.1",
     "@nestjs/microservices": "^7.1.1",
-    "@nestjs/platform-express": "^7.1.1",
+    "@nestjs/platform-express": "^9.2.1",
     "@nestjs/websockets": "^7.1.1",
     "dotenv": "^8.2.0",
     "reflect-metadata": "^0.1.13",
